@@ -50,11 +50,11 @@ const Admin = () => {
             </div>
 
             {/* Header / Brand Section */}
-            <header className="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#0d0d17]/60 backdrop-blur-xl border-b border-white/5">
+            <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-8 h-20 bg-[#0d0d17]/60 backdrop-blur-xl border-b border-white/5">
                 <div className="flex items-center gap-4">
-                    <Link to="/" className="text-2xl font-bold tracking-tighter text-primary font-headline uppercase">SVIT</Link>
+                    <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter text-primary font-headline uppercase">SVIT</Link>
                     <div className="h-6 w-[1px] bg-outline-variant/30"></div>
-                    <span className="text-sm font-label tracking-widest text-on-surface-variant uppercase font-black">Admin Console</span>
+                    <span className="text-[10px] md:text-sm font-label tracking-widest text-on-surface-variant uppercase font-black">Admin Console</span>
                 </div>
                 <div className="hidden md:flex gap-8">
                     {['System Status', 'Resources'].map((item) => (
@@ -64,36 +64,36 @@ const Admin = () => {
             </header>
 
             {/* Main Content: Login Portal */}
-            <main className="flex-grow flex items-center justify-center p-6 pt-24 z-10">
+            <main className="flex-grow flex items-center justify-center p-4 sm:p-6 pt-24 z-10">
                 <div className="relative w-full max-w-md">
                     {/* Glow Halo Effect */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary via-tertiary to-primary rounded-xl blur-2xl opacity-20"></div>
                     
                     {/* Login Card */}
-                    <div className="relative bg-surface-container/80 backdrop-blur-[24px] rounded-xl glass-edge p-8 md:p-10 kinetic-glow border border-white/5">
-                        <div className="mb-10 text-center">
-                            <h1 className="text-3xl md:text-4xl font-headline font-bold tracking-tighter mb-2 italic uppercase">SVIT HackVerse 2k26</h1>
+                    <div className="relative bg-surface-container/80 backdrop-blur-[24px] rounded-xl glass-edge p-6 sm:p-8 md:p-10 kinetic-glow border border-white/5">
+                        <div className="mb-8 md:mb-10 text-center">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-headline font-bold tracking-tighter mb-2 italic uppercase">SVIT HackVerse 2k26</h1>
                             <div className="flex items-center justify-center gap-2">
                                 <span className="inline-block w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#ff51fa]"></span>
-                                <span className="text-[10px] font-label tracking-[0.3em] text-tertiary uppercase font-black">2026 EDITION</span>
+                                <span className="text-[9px] md:text-[10px] font-label tracking-[0.3em] text-tertiary uppercase font-black">2026 EDITION</span>
                             </div>
                         </div>
 
                         <form className="space-y-6 text-left" onSubmit={handleLogin}>
                             {error && (
-                                <div className="p-4 bg-error/10 border border-error/20 rounded-lg text-error text-xs font-bold uppercase tracking-widest animate-pulse">
+                                <div className="p-4 bg-error/10 border border-error/20 rounded-lg text-error text-[10px] font-bold uppercase tracking-widest animate-pulse">
                                     {error}
                                 </div>
                             )}
 
                             <div className="space-y-2">
-                                <label className="block text-[10px] font-label font-black text-primary tracking-[0.3em] uppercase ml-1" htmlFor="admin_id">
+                                <label className="block text-[9px] md:text-[10px] font-label font-black text-primary tracking-[0.3em] uppercase ml-1" htmlFor="admin_id">
                                     Access Identity
                                 </label>
                                 <div className="relative group">
                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg">fingerprint</span>
                                     <input 
-                                        className="w-full bg-surface-container-highest/50 border-0 border-b-2 border-outline-variant text-on-surface pl-12 pr-4 py-4 rounded-t-lg focus:ring-0 focus:border-primary focus:bg-surface-container-highest/80 transition-all duration-300 placeholder:text-on-surface-variant/30 font-bold" 
+                                        className="w-full bg-surface-container-highest/50 border-0 border-b-2 border-outline-variant text-on-surface pl-12 pr-4 py-4 rounded-t-lg focus:ring-0 focus:border-primary focus:bg-surface-container-highest/80 transition-all duration-300 placeholder:text-on-surface-variant/30 font-bold text-sm md:text-base" 
                                         id="admin_id" 
                                         placeholder="ADMIN_SERIAL_NUMBER" 
                                         type="text" 
@@ -105,13 +105,13 @@ const Admin = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="block text-[10px] font-label font-black text-primary tracking-[0.3em] uppercase ml-1" htmlFor="auth_key">
+                                <label className="block text-[9px] md:text-[10px] font-label font-black text-primary tracking-[0.3em] uppercase ml-1" htmlFor="auth_key">
                                     Authorization Key
                                 </label>
                                 <div className="relative group">
                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg">key</span>
                                     <input 
-                                        className="w-full bg-surface-container-highest/50 border-0 border-b-2 border-outline-variant text-on-surface pl-12 pr-4 py-4 rounded-t-lg focus:ring-0 focus:border-primary focus:bg-surface-container-highest/80 transition-all duration-300 placeholder:text-on-surface-variant/30 font-bold" 
+                                        className="w-full bg-surface-container-highest/50 border-0 border-b-2 border-outline-variant text-on-surface pl-12 pr-4 py-4 rounded-t-lg focus:ring-0 focus:border-primary focus:bg-surface-container-highest/80 transition-all duration-300 placeholder:text-on-surface-variant/30 font-bold text-sm md:text-base" 
                                         id="auth_key" 
                                         placeholder="••••••••••••" 
                                         type="password" 
@@ -122,7 +122,7 @@ const Admin = () => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest">
+                            <div className="flex items-center justify-between text-[8px] md:text-[10px] font-black uppercase tracking-widest">
                                 <label className="flex items-center gap-2 text-on-surface-variant cursor-pointer group">
                                     <input className="w-4 h-4 rounded border-outline-variant bg-surface-container-highest text-primary focus:ring-primary focus:ring-offset-0 transition-all" type="checkbox"/>
                                     <span className="group-hover:text-on-surface transition-colors">Remember Session</span>
@@ -133,7 +133,7 @@ const Admin = () => {
                             <button 
                                 type="submit" 
                                 disabled={loading}
-                                className="w-full mt-4 group relative flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 rounded-xl font-headline font-black tracking-tight text-lg shadow-[0_0_20px_rgba(0,238,252,0.3)] hover:shadow-[0_0_35px_rgba(0,238,252,0.5)] active:scale-[0.98] transition-all duration-300 overflow-hidden disabled:opacity-50"
+                                className="w-full mt-4 group relative flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 md:py-5 rounded-xl font-headline font-black tracking-tight text-base md:text-lg shadow-[0_0_20px_rgba(0,238,252,0.3)] hover:shadow-[0_0_35px_rgba(0,238,252,0.5)] active:scale-[0.98] transition-all duration-300 overflow-hidden disabled:opacity-50"
                             >
                                 <span className="relative z-10 uppercase">{loading ? 'Verifying...' : 'Initialize System'}</span>
                                 <span className="material-symbols-outlined relative z-10 transition-transform group-hover:translate-x-1">terminal</span>
@@ -142,21 +142,21 @@ const Admin = () => {
                         </form>
 
                         {/* System Metadata */}
-                        <div className="mt-10 pt-6 border-t border-white/5 flex justify-between items-end text-left">
+                        <div className="mt-8 md:mt-10 pt-6 border-t border-white/5 flex justify-between items-end text-left">
                             <div>
-                                <p className="text-[8px] font-label text-on-surface-variant/50 tracking-[0.3em] uppercase font-black">Security Protocol</p>
-                                <p className="text-[10px] font-label text-on-surface-variant tracking-[0.2em] uppercase font-black">AES-256-GCM ACTIVE</p>
+                                <p className="text-[7px] md:text-[8px] font-label text-on-surface-variant/50 tracking-[0.3em] uppercase font-black">Security Protocol</p>
+                                <p className="text-[9px] md:text-[10px] font-label text-on-surface-variant tracking-[0.2em] uppercase font-black">AES-256-GCM ACTIVE</p>
                             </div>
                             <div className="text-right">
-                                <p className="text-[8px] font-label text-on-surface-variant/50 tracking-[0.3em] uppercase font-black">Node Location</p>
-                                <p className="text-[10px] font-label text-on-surface-variant tracking-[0.2em] uppercase font-black">SVIT_SERVER_01</p>
+                                <p className="text-[7px] md:text-[8px] font-label text-on-surface-variant/50 tracking-[0.3em] uppercase font-black">Node Location</p>
+                                <p className="text-[9px] md:text-[10px] font-label text-on-surface-variant tracking-[0.2em] uppercase font-black">SVIT_SERVER_01</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Supporting Info */}
                     <div className="mt-8 text-center px-4">
-                        <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] opacity-40 leading-relaxed">
+                        <p className="text-on-surface-variant text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] opacity-40 leading-relaxed">
                             Restricted area. Unauthorized access will be logged and reported to system root.
                         </p>
                     </div>
@@ -165,11 +165,7 @@ const Admin = () => {
 
             {/* Footer */}
             <footer className="w-full py-16 flex flex-col items-center gap-8 px-8 mt-auto z-10 border-t border-white/5 bg-[#000000]">
-                <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
-                    {['Guidelines', 'Technical Specs', 'Contact Support'].map((link) => (
-                        <a key={link} className="text-on-surface-variant text-[10px] font-black uppercase tracking-widest hover:text-secondary transition-colors" href="#">{link}</a>
-                    ))}
-                </div>
+
                 <div className="flex flex-col items-center gap-2">
                     <span className="text-xl font-black text-primary font-headline tracking-tighter uppercase">SVIT IT</span>
                     <p className="text-[10px] font-black text-on-surface-variant/30 tracking-[0.4em] uppercase">© 2026 Department of Information Technology</p>

@@ -78,25 +78,29 @@ const Payment = () => {
     return (
         <div className="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
             {/* Main Content Canvas */}
-            <main className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6 md:p-12">
+            <main className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-4 sm:p-6 md:p-12">
                 {/* Background Ambient Elements */}
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div className="absolute top-[-10%] right-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-secondary/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-primary/10 rounded-full blur-[60px] md:blur-[100px] pointer-events-none"></div>
                 
                 {/* Central Payment Container */}
-                <div className="w-full max-w-4xl glass-panel rounded-[48px] relative z-10 p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center backdrop-blur-3xl border border-white/5">
+                <div className="w-full max-w-5xl glass-panel rounded-[24px] md:rounded-[48px] relative z-10 p-6 sm:p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center backdrop-blur-3xl border border-white/5 shadow-2xl animate-fade-up">
                     {/* Left Side: QR & Amount */}
-                    <div className="flex flex-col items-center text-center space-y-8">
-                        <div className="space-y-3">
-                            <h2 className="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tighter uppercase">Secure <span className="text-primary text-outline">Payment</span></h2>
-                            <p className="text-on-surface-variant font-black text-xs uppercase tracking-widest opacity-80">Registration for Team: <span className="text-primary">{teamName}</span></p>
-                            <p className="text-on-surface-variant font-medium text-sm">Scan the QR code to finish your registration</p>
+                    <div className="flex flex-col items-center text-center space-y-6 md:space-y-10">
+                        <div className="space-y-4">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tighter uppercase italic leading-none">
+                                Secure <span className="text-primary text-outline">Payment</span>
+                            </h2>
+                            <div className="space-y-2">
+                                <p className="text-on-surface-variant font-black text-[10px] md:text-xs uppercase tracking-widest opacity-80">Registration for Team: <span className="text-primary">{teamName}</span></p>
+                                <p className="text-on-surface-variant font-medium text-xs md:text-sm">Scan the QR code to finish your registration</p>
+                            </div>
                         </div>
                         
                         {/* QR Code Container */}
-                        <div className="relative group p-4">
-                            <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-2xl group-hover:bg-primary/30 transition-all duration-500 animate-glow-pulse"></div>
-                            <div className="relative w-64 h-64 bg-surface-container-highest/50 p-6 rounded-3xl border border-primary/30 flex items-center justify-center backdrop-blur-md">
+                        <div className="relative group p-2 md:p-4">
+                            <div className="absolute -inset-2 md:-inset-4 bg-primary/20 rounded-3xl blur-2xl group-hover:bg-primary/30 transition-all duration-500 animate-glow-pulse"></div>
+                            <div className="relative w-48 h-48 md:w-64 md:h-64 bg-surface-container-highest/50 p-4 md:p-6 rounded-2xl md:rounded-3xl border border-primary/30 flex items-center justify-center backdrop-blur-md">
                                 <img 
                                     alt="Payment QR Code" 
                                     className="w-full h-full object-contain filter invert brightness-150 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" 
@@ -105,14 +109,14 @@ const Payment = () => {
                             </div>
                         </div>
 
-                        <div className="bg-surface-container-lowest/50 px-8 py-5 rounded-2xl border border-outline-variant/30 backdrop-blur-sm shimmer-edge text-center">
-                            <span className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.3em] block mb-1">Payable Amount (₹200 x {teamSize})</span>
-                            <span className="text-4xl font-headline font-black text-primary tracking-tighter">₹{totalFee.toLocaleString()}</span>
+                        <div className="bg-surface-container-lowest/50 px-6 md:px-10 py-4 md:py-6 rounded-2xl border border-outline-variant/30 backdrop-blur-sm shimmer-edge text-center w-full md:w-auto">
+                            <span className="text-on-surface-variant text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] block mb-1">Payable Amount (₹200 x {teamSize})</span>
+                            <span className="text-3xl md:text-4xl font-headline font-black text-primary tracking-tighter">₹{totalFee.toLocaleString()}</span>
                         </div>
                     </div>
 
                     {/* Right Side: Submission Form */}
-                    <form onSubmit={handleSubmit} className="flex flex-col space-y-10 text-left">
+                    <form onSubmit={handleSubmit} className="flex flex-col space-y-8 md:space-y-10 text-left">
                         {message.text && (
                             <div className={`p-4 rounded-xl text-xs font-black uppercase tracking-widest ${message.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                                 {message.text}
@@ -137,17 +141,17 @@ const Payment = () => {
                         {/* Drag & Drop Upload */}
                         <div className="space-y-3">
                             <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00F0FF] opacity-70">Proof of Payment</label>
-                            <div className="group relative border-2 border-dashed border-outline-variant/40 rounded-2xl p-10 transition-all hover:border-primary/40 hover:bg-primary/5 flex flex-col items-center justify-center gap-4 cursor-pointer overflow-hidden shimmer-edge">
+                            <div className="group relative border-2 border-dashed border-outline-variant/40 rounded-2xl p-6 md:p-10 transition-all hover:border-primary/40 hover:bg-primary/5 flex flex-col items-center justify-center gap-4 cursor-pointer overflow-hidden shimmer-edge min-h-[150px]">
                                 {previewUrl ? (
-                                    <img src={previewUrl} alt="Preview" className="w-full h-32 object-contain rounded-lg" />
+                                    <img src={previewUrl} alt="Preview" className="w-full h-32 md:h-40 object-contain rounded-lg" />
                                 ) : (
                                     <>
-                                        <div className="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg group-hover:shadow-primary/10">
-                                            <span className="material-symbols-outlined text-primary text-3xl" data-weight="fill">cloud_upload</span>
+                                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-surface-container-high flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg group-hover:shadow-primary/10">
+                                            <span className="material-symbols-outlined text-primary text-2xl md:text-3xl" data-weight="fill">cloud_upload</span>
                                         </div>
                                         <div className="text-center">
-                                            <p className="text-on-surface font-black uppercase text-xs tracking-widest">Drop screenshot here</p>
-                                            <p className="text-[10px] text-on-surface-variant font-bold mt-1">PNG, JPG up to 5MB</p>
+                                            <p className="text-on-surface font-black uppercase text-[10px] md:text-xs tracking-widest">Drop screenshot here</p>
+                                            <p className="text-[9px] md:text-[10px] text-on-surface-variant font-bold mt-1 uppercase">PNG, JPG up to 5MB</p>
                                         </div>
                                     </>
                                 )}
@@ -163,11 +167,11 @@ const Payment = () => {
 
                         {/* Submit Button with Pulse */}
                         <div className="pt-4 relative space-y-4">
-                            <div className="text-right">
-                                <div className={`flex items-center justify-end gap-2 text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${loading ? 'text-primary animate-pulse' : 'text-red-500'}`}>
+                            <div className="text-center md:text-right px-2">
+                                <div className={`flex items-center justify-center md:justify-end gap-2 text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${loading ? 'text-primary animate-pulse' : 'text-red-500'}`}>
                                     <span className="material-symbols-outlined text-sm">{loading ? 'sync' : 'emergency'}</span>
-                                    <p>
-                                        {loading ? "Verifying Payment... Please do not refresh" : "Please stay on this page until verification is successful. This may take a few seconds."}
+                                    <p className="leading-relaxed">
+                                        {loading ? "Verifying Payment... Please do not refresh" : "Keep this open for verification"}
                                     </p>
                                 </div>
                             </div>
@@ -176,20 +180,17 @@ const Payment = () => {
                                 <button 
                                     type="submit"
                                     disabled={loading}
-                                    className="relative w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline font-black text-xl rounded-2xl uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-50"
+                                    className="relative w-full py-4 md:py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline font-black text-lg md:text-xl rounded-2xl uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-50"
                                 >
                                     <span>{loading ? 'Processing...' : 'Submit Verification'}</span>
                                     {loading ? (
-                                        <span className="material-symbols-outlined animate-spin text-2xl">refresh</span>
+                                        <span className="material-symbols-outlined animate-spin text-xl md:text-2xl">refresh</span>
                                     ) : (
-                                        <span className="material-symbols-outlined text-2xl">arrow_circle_right</span>
+                                        <span className="material-symbols-outlined text-xl md:text-2xl">arrow_circle_right</span>
                                     )}
                                 </button>
                             </div>
                         </div>
-
-                        {/* Info Note */}
-                       
                     </form>
                 </div>
             </main>
@@ -208,11 +209,7 @@ const Payment = () => {
                         <span className="text-2xl font-black text-[#00F0FF] font-headline uppercase tracking-widest">SVIT HackVerse 2k26</span>
                         <p className="text-on-surface-variant font-black uppercase text-[10px] tracking-[0.4em] opacity-40 leading-loose">© 2026 SVIT Department of IT. <br /> Engineered for excellence.</p>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
-                        {['Guidelines', 'Sponsors', 'Contact Us', 'Privacy'].map((link) => (
-                            <a key={link} className="text-on-surface-variant inline-block font-black uppercase text-xs tracking-widest hover:text-primary transition-all underline-offset-8" href="#">{link}</a>
-                        ))}
-                    </div>
+
                 </div>
                 <div className="mt-8 pt-8 border-t border-white/5 w-full max-w-6xl flex justify-center">
                     <div className="flex gap-8">
