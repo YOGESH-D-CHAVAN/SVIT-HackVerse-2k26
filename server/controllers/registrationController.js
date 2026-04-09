@@ -5,18 +5,46 @@ const Participant = require('../models/Participant');
 // @access  Public
 exports.registerParticipant = async (req, res) => {
     try {
-        const { teamName, teamSize, college, track, leaderEmail, leaderPhone, members } = req.body;
+        console.log('--- Debug: Incoming Registration Body ---');
+        console.log(req.body);
+        console.log('--- Debug: File Info ---');
+        console.log(req.file);
         
-        console.log('Incoming registration request:', { teamName, teamSize });
+        const { teamName, teamSize, college, track, leaderName, leaderEmail, leaderPhone, transactionId } = req.body;
+        let { members } = req.body;
+
+        // ... existing parse logic ...
+        if (typeof members === 'string') {
+            try {
+                members = JSON.parse(members);
+            } catch (e) {
+                console.warn('Could not parse members string, using empty array');
+                members = [];
+            }
+        }
+        
+        console.log('Processed Destructured Fields:', { teamName, teamSize, leaderName, transactionId });
+
+        // Check for unique team name
+        const existingTeam = await Participant.findOne({ teamName: { $regex: new RegExp(`^${teamName}$`, 'i') } });
+        if (existingTeam) {
+            return res.status(400).json({
+                success: false,
+                message: `The team name "${teamName}" is already taken. Please go back and choose a different name.`
+            });
+        }
 
         const newParticipant = new Participant({
             teamName,
             teamSize,
             college,
             track,
+            leaderName,
             leaderEmail,
             leaderPhone,
-            members: members || []
+            transactionId,
+            members: members || [],
+            paymentProof: req.file ? `/uploads/${req.file.filename}` : null
         });
 
         const savedParticipant = await newParticipant.save();

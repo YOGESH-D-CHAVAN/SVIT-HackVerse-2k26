@@ -4,6 +4,7 @@ const participantSchema = new mongoose.Schema({
     teamName: {
         type: String,
         required: true,
+        unique: true,
         trim: true
     },
     teamSize: {
@@ -26,6 +27,10 @@ const participantSchema = new mongoose.Schema({
         type: String,
         default: 'General'
     },
+    leaderName: {
+        type: String,
+        required: true
+    },
     leaderEmail: {
         type: String,
         required: true
@@ -37,9 +42,14 @@ const participantSchema = new mongoose.Schema({
     members: [
         {
             name: String,
-            email: String
+            email: String,
+            phone: String
         }
     ],
+    transactionId: {
+        type: String,
+        required: true
+    },
     paymentProof: {
         type: String // URL or file path to the upload
     }

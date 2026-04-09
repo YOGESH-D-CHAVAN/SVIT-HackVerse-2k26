@@ -6,6 +6,7 @@ const Register = () => {
     const [teamName, setTeamName] = useState('');
     const [teamSize, setTeamSize] = useState(1);
     const [college, setCollege] = useState('');
+    const [leaderName, setLeaderName] = useState('');
     const [leaderEmail, setLeaderEmail] = useState('');
     const [leaderPhone, setLeaderPhone] = useState('');
     const [members, setMembers] = useState([]);
@@ -19,44 +20,21 @@ const Register = () => {
         setMembers(newMembers);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
-        setMessage({ type: '', text: '' });
+        
+        const registrationData = {
+            teamName,
+            teamSize,
+            college,
+            leaderName,
+            leaderEmail,
+            leaderPhone,
+            members: members.slice(0, teamSize - 1)
+        };
 
-        try {
-            const registrationData = {
-                teamName,
-                teamSize,
-                college,
-                leaderEmail,
-                leaderPhone,
-                members: members.slice(0, teamSize - 1)
-            };
-
-            const response = await fetch('http://localhost:5000/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(registrationData),
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                setMessage({ type: 'success', text: 'Registration Successful! Redirecting to payment...' });
-                
-                // Redirect to payment after 2 seconds
-                setTimeout(() => {
-                    navigate('/payment', { state: { teamSize, teamName } });
-                }, 2000);
-            } else {
-                setMessage({ type: 'error', text: data.message || 'Registration failed.' });
-            }
-        } catch (err) {
-            setMessage({ type: 'error', text: 'Connection error. Is the server running?' });
-        } finally {
-            setLoading(false);
-        }
+        // Navigate to payment page with data
+        navigate('/payment', { state: registrationData });
     };
 
     return (
@@ -133,6 +111,18 @@ const Register = () => {
                                     />
                                 </div>
 
+                                <div className="md:col-span-2 space-y-3">
+                                    <label className="font-headline text-[10px] font-black uppercase tracking-[0.3em] text-[#00F0FF] opacity-70">Leader Full Name</label>
+                                    <input 
+                                        required
+                                        className="w-full bg-surface-container-highest/30 border border-outline-variant/30 rounded-xl px-4 py-4 text-on-surface focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" 
+                                        placeholder="John Doe" 
+                                        type="text" 
+                                        value={leaderName}
+                                        onChange={(e) => setLeaderName(e.target.value)}
+                                    />
+                                </div>
+
                                 <div className="space-y-3">
                                     <label className="font-headline text-[10px] font-black uppercase tracking-[0.3em] text-[#00F0FF] opacity-70">Leader Mobile No.</label>
                                     <input 
@@ -179,6 +169,16 @@ const Register = () => {
                                                     />
                                                 </div>
                                                 <div className="space-y-2">
+                                                    <label className="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-black opacity-60">Mobile Number</label>
+                                                    <input 
+                                                        required
+                                                        className="w-full bg-surface-container-highest/50 border border-outline-variant/20 rounded-lg px-4 py-2 text-sm focus:border-primary focus:ring-0 transition-all font-bold font-mono" 
+                                                        type="tel" 
+                                                        placeholder="+91 XXXXX XXXXX" 
+                                                        onChange={(e) => handleMemberChange(i, 'phone', e.target.value)}
+                                                    />
+                                                </div>
+                                                <div className="md:col-span-2 space-y-2">
                                                     <label className="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-black opacity-60">Email Address</label>
                                                     <input 
                                                         required
@@ -205,11 +205,10 @@ const Register = () => {
                                     </Link>
                                     <button 
                                         type="submit"
-                                        disabled={loading}
-                                        className="flex-1 md:flex-none bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                                        className="flex-1 md:flex-none bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                                     >
-                                        {loading ? 'Processing...' : 'Complete Registration'}
-                                        <span className="material-symbols-outlined">how_to_reg</span>
+                                        Proceed to Payment
+                                        <span className="material-symbols-outlined">payments</span>
                                     </button>
                                 </div>
                             </div>
