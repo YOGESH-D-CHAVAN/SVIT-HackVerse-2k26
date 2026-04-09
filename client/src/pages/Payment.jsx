@@ -162,25 +162,34 @@ const Payment = () => {
                         </div>
 
                         {/* Submit Button with Pulse */}
-                        <div className="pt-4 relative">
-                            <div className="absolute -inset-2 bg-primary blur-xl opacity-20 pulse-effect"></div>
-                            <button 
-                                type="submit"
-                                disabled={loading}
-                                className="relative w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline font-black text-xl rounded-2xl uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-50"
-                            >
-                                <span>{loading ? 'Processing...' : 'Submit Verification'}</span>
-                                <span className="material-symbols-outlined text-2xl">arrow_circle_right</span>
-                            </button>
+                        <div className="pt-4 relative space-y-4">
+                            <div className="text-right">
+                                <div className={`flex items-center justify-end gap-2 text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${loading ? 'text-primary animate-pulse' : 'text-red-500'}`}>
+                                    <span className="material-symbols-outlined text-sm">{loading ? 'sync' : 'emergency'}</span>
+                                    <p>
+                                        {loading ? "Verifying Payment... Please do not refresh" : "Please stay on this page until verification is successful. This may take a few seconds."}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <div className="absolute -inset-2 bg-primary blur-xl opacity-20 pulse-effect"></div>
+                                <button 
+                                    type="submit"
+                                    disabled={loading}
+                                    className="relative w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline font-black text-xl rounded-2xl uppercase tracking-tighter hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-50"
+                                >
+                                    <span>{loading ? 'Processing...' : 'Submit Verification'}</span>
+                                    {loading ? (
+                                        <span className="material-symbols-outlined animate-spin text-2xl">refresh</span>
+                                    ) : (
+                                        <span className="material-symbols-outlined text-2xl">arrow_circle_right</span>
+                                    )}
+                                </button>
+                            </div>
                         </div>
 
                         {/* Info Note */}
-                        <div className="flex items-start gap-4 p-5 bg-white/[0.03] rounded-2xl border border-white/5">
-                            <span className="material-symbols-outlined text-secondary text-xl">info</span>
-                            <p className="text-[11px] text-on-surface-variant leading-relaxed font-bold uppercase tracking-widest opacity-60">
-                                Verification typically takes 2-4 hours. You will receive an email once your registration status is updated to "Confirmed".
-                            </p>
-                        </div>
+                       
                     </form>
                 </div>
             </main>

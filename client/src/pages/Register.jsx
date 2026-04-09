@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         
         const registrationData = {
             teamName,
@@ -33,22 +35,16 @@ const Register = () => {
             members: members.slice(0, teamSize - 1)
         };
 
-        // Navigate to payment page with data
-        navigate('/payment', { state: registrationData });
+        // Simulate a slight delay as requested ("This may take a few seconds")
+        setTimeout(() => {
+            navigate('/payment', { state: registrationData });
+            setLoading(false);
+        }, 2000);
     };
 
     return (
         <div className="font-body text-on-surface min-h-screen flex flex-col bg-surface-dim selection:bg-primary selection:text-on-primary">
-            {/* TopNavBar */}
-            <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#0d0d17]/60 backdrop-blur-xl border-b border-white/5">
-                <Link to="/" className="text-2xl font-bold tracking-tighter text-[#00F0FF] font-headline hover:drop-shadow-[0_0_8px_#00F0FF] transition-all uppercase">SVIT HackVerse 2k26</Link>
-                <div className="hidden md:flex gap-8 items-center">
-                    {['Guidelines', 'Schedule', 'Mentors'].map((item) => (
-                        <a key={item} className="font-headline tracking-tight text-on-surface-variant hover:text-[#00F0FF] transition-all duration-300 uppercase text-xs font-bold tracking-widest" href="#">{item}</a>
-                    ))}
-                    <Link to="/" className="bg-[#00F0FF] text-[#005d63] px-6 py-2 font-bold font-headline rounded-lg active:scale-95 duration-150 transition-all text-xs uppercase tracking-widest">Home</Link>
-                </div>
-            </nav>
+            <Navbar />
 
             <div className="flex flex-1 pt-20">
                 <main className="flex-1 p-6 md:p-12 relative overflow-hidden">
@@ -199,17 +195,32 @@ const Register = () => {
                                     <div className="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse shadow-[0_0_10px_#ff51fa]"></div>
                                     Portal closing in 4 days
                                 </div>
-                                <div className="flex gap-4 w-full md:w-auto">
-                                    <Link to="/payment" className="flex-1 md:flex-none border border-white/10 text-on-surface px-8 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all flex items-center justify-center gap-3">
-                                        Payment Info
-                                    </Link>
-                                    <button 
-                                        type="submit"
-                                        className="flex-1 md:flex-none bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
-                                    >
-                                        Proceed to Payment
-                                        <span className="material-symbols-outlined">payments</span>
-                                    </button>
+                                <div className="flex flex-col gap-6 w-full md:w-auto">
+                                    <div className="text-right">
+                                        <div className={`flex items-center justify-end gap-2 text-xs font-black uppercase tracking-widest mb-2 transition-all duration-300 ${loading ? 'text-primary animate-pulse' : 'text-red-500'}`}>
+                                            <span className="material-symbols-outlined text-sm">{loading ? 'sync' : 'emergency'}</span>
+                                            <p>
+                                                {loading ? "Registering... Please do not refresh" : "Please stay on this page until registration is successful. This may take a few seconds."}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <Link to="/payment" className="flex-1 md:flex-none border border-white/10 text-on-surface px-8 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all flex items-center justify-center gap-3">
+                                            Payment Info
+                                        </Link>
+                                        <button 
+                                            type="submit"
+                                            disabled={loading}
+                                            className={`flex-1 md:flex-none bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-5 font-headline font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-3 ${loading ? 'opacity-50 cursor-not-allowed scale-95' : 'hover:scale-105 active:scale-95'}`}
+                                        >
+                                            {loading ? 'Processing...' : 'Proceed to Payment'}
+                                            {loading ? (
+                                                <span className="material-symbols-outlined animate-spin">refresh</span>
+                                            ) : (
+                                                <span className="material-symbols-outlined">payments</span>
+                                            )}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
