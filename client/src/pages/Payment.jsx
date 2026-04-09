@@ -55,7 +55,7 @@ const Payment = () => {
             formData.append('members', JSON.stringify(members));
             formData.append('paymentProof', file);
 
-            const response = await fetch('http://localhost:5000/api/register', {
+            const response = await fetch('https://svit-hackverse-2k26.onrender.com/api/register', {
                 method: 'POST',
                 body: formData,
             });

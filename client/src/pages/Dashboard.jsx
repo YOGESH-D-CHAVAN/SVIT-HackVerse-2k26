@@ -21,12 +21,12 @@ const Dashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 // Fetch Stats
-                const statsRes = await fetch('http://localhost:5000/api/admin/stats');
+                const statsRes = await fetch('https://svit-hackverse-2k26.onrender.com/api/admin/stats');
                 const statsData = await statsRes.json();
                 if (statsData.success) setStats(statsData.stats);
 
                 // Fetch Registrations
-                const regRes = await fetch('http://localhost:5000/api/admin/registrations');
+                const regRes = await fetch('https://svit-hackverse-2k26.onrender.com/api/admin/registrations');
                 const regData = await regRes.json();
                 if (regData.success) setRegistrations(regData.data);
             } catch (error) {
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     const handleExport = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/admin/export');
+            const response = await fetch('https://svit-hackverse-2k26.onrender.com/api/admin/export');
             if (response.ok) {
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
@@ -273,10 +273,10 @@ const Dashboard = () => {
                                                     <p className="text-[8px] font-black uppercase tracking-widest text-on-surface-variant">Proof of Payment</p>
                                                     <div className="relative group overflow-hidden rounded-xl border border-white/10 hover:border-primary/50 transition-all cursor-zoom-in">
                                                         <img 
-                                                            src={`http://localhost:5000${selectedTeam.paymentProof}`} 
+                                                            src={`https://svit-hackverse-2k26.onrender.com${selectedTeam.paymentProof}`} 
                                                             alt="Payment Proof" 
                                                             className="w-full h-auto max-h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
-                                                            onClick={() => window.open(`http://localhost:5000${selectedTeam.paymentProof}`, '_blank')}
+                                                            onClick={() => window.open(`https://svit-hackverse-2k26.onrender.com${selectedTeam.paymentProof}`, '_blank')}
                                                         />
                                                         <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center pointer-events-none">
                                                             <span className="material-symbols-outlined text-white text-3xl">zoom_in</span>
