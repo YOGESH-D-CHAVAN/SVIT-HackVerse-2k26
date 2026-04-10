@@ -332,7 +332,7 @@ const LandingPage = () => {
                                 Registration fee of ₹200 per student. Invest in your innovation and secure your spot!
                             </p>
                             <div className="bg-secondary/20 px-6 md:px-8 py-3 rounded-xl md:rounded-2xl border border-secondary/30">
-                                <p className="text-secondary font-black tracking-[0.1em] md:tracking-[0.2em] uppercase text-[10px] md:text-sm">₹1,000 PER TEAM</p>
+                                <p className="text-secondary font-black tracking-[0.1em] md:tracking-[0.2em] uppercase text-[10px] md:text-sm">₹200 PER STUDENT</p>
                             </div>
                         </div>
                     </div>
