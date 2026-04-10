@@ -147,7 +147,7 @@ const LandingPage = () => {
     <div className="w-full max-w-5xl mb-12 md:mb-16">
       <div className="glass-card p-8 md:p-14 rounded-[32px] md:rounded-[48px] border-2 border-primary relative text-center shadow-[0_0_50px_rgba(0,240,255,0.15)] overflow-hidden group">
         
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent animate-glow-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent animate-glow-pulse pointer-events-none"></div>
 
         <span className="material-symbols-outlined text-primary text-5xl md:text-7xl mb-4 md:mb-6 relative z-10 animate-float">
           emoji_events
@@ -271,7 +271,7 @@ const LandingPage = () => {
                         <div className="flex justify-center">
                             <div className="w-full max-w-2xl px-2">
                                 <div className="glass-card p-8 md:p-16 rounded-[32px] md:rounded-[48px] border-2 border-secondary/30 relative text-center shadow-[0_0_50px_rgba(213,117,255,0.1)] overflow-hidden group hover:border-secondary/60 transition-all duration-500">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                                     
                                     <div className="h-20 md:h-32 flex items-center justify-center mb-6 md:mb-10">
                                         <img src="/TenAI.png" alt="TenAI" className="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" />
@@ -282,7 +282,7 @@ const LandingPage = () => {
                                         Leading the charge in intelligent solutions and sustainable digital transformation.
                                     </p>
 
-                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                                         <a 
                                             href="https://studio.tenais.in/" 
                                             target="_blank" 
