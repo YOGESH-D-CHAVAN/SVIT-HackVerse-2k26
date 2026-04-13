@@ -46,6 +46,10 @@ if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir);
 }
 
+app.get('/', (req, res) => {
+    res.send('<h1>SVIT HackVerse 2k26 Backend is operational.</h1>');
+})
+
 // Health Check
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'SVIT HackVerse 2k26 Backend is operational.' });
