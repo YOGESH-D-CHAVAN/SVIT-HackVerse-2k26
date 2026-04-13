@@ -7,7 +7,7 @@ const Guidelines = () => {
             title: "Event Rules",
             icon: "gavel",
             rules: [
-                "The hackathon is a 48-hour event. Teams must submit their projects before the deadline.",
+                "The hackathon is a 36-hour event. Teams must submit their projects before the deadline.",
                 "All work must be original and created during the event period.",
                 "Teams can use open-source libraries but must declare them in their submission.",
                 "Decisions made by the judges are final and binding."

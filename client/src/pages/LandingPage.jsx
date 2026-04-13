@@ -113,7 +113,7 @@ const LandingPage = () => {
                         </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                                 {[
-                                    { label: "Registration Deadline", value: "10 APR 2026", color: "error", icon: "alarm" },
+                                    { label: "Registration Deadline", value: "22 APR 2026", color: "error", icon: "alarm" },
                                     { label: "Hackathon Dates", value: "24th – 25th APR", color: "primary", icon: "calendar_today" },
                                     { label: "Timing", value: "24th 9:00 AM to 25th 9:00 PM", color: "secondary", icon: "schedule" }
                                 ].map((item, idx) => (
