@@ -273,10 +273,10 @@ const Dashboard = () => {
                                                     <p className="text-[8px] font-black uppercase tracking-widest text-on-surface-variant">Proof of Payment</p>
                                                     <div className="relative group overflow-hidden rounded-xl border border-white/10 hover:border-primary/50 transition-all cursor-zoom-in">
                                                         <img 
-                                                            src={`${import.meta.env.VITE_API_URL}${selectedTeam.paymentProof}`} 
+                                                            src={selectedTeam.paymentProof.startsWith('http') ? selectedTeam.paymentProof : `${import.meta.env.VITE_API_URL}${selectedTeam.paymentProof}`} 
                                                             alt="Payment Proof" 
                                                             className="w-full h-auto max-h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
-                                                            onClick={() => window.open(`${import.meta.env.VITE_API_URL}${selectedTeam.paymentProof}`, '_blank')}
+                                                            onClick={() => window.open(selectedTeam.paymentProof.startsWith('http') ? selectedTeam.paymentProof : `${import.meta.env.VITE_API_URL}${selectedTeam.paymentProof}`, '_blank')}
                                                         />
                                                         <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center pointer-events-none">
                                                             <span className="material-symbols-outlined text-white text-3xl">zoom_in</span>

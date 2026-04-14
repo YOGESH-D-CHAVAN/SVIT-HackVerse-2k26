@@ -5,10 +5,17 @@ const Participant = require('../models/Participant');
 // @access  Public
 exports.registerParticipant = async (req, res) => {
     try {
-        console.log('--- Debug: Incoming Registration Body ---');
-        console.log(req.body);
-        console.log('--- Debug: File Info ---');
-        console.log(req.file);
+        console.log('--- [NEW REGISTRATION ATTEMPT] ---');
+        console.log('Body:', req.body);
+        
+        if (req.file) {
+            console.log('✅ File received by Multer:');
+            console.log('   - Original Name:', req.file.originalname);
+            console.log('   - Field Name:', req.file.fieldname);
+            console.log('   - Path/URL:', req.file.path);
+        } else {
+            console.warn('⚠️ No file attached in req.file. Check frontend field name.');
+        }
         
         const { teamName, teamSize, college, track, leaderName, leaderEmail, leaderPhone, transactionId } = req.body;
         let { members } = req.body;
@@ -44,7 +51,7 @@ exports.registerParticipant = async (req, res) => {
             leaderPhone,
             transactionId,
             members: members || [],
-            paymentProof: req.file ? `/uploads/${req.file.filename}` : null
+            paymentProof: req.file ? req.file.path : null
         });
 
         const savedParticipant = await newParticipant.save();

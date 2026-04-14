@@ -91,7 +91,7 @@ exports.exportRegistrations = async (req, res) => {
                 ? reg.members.map(m => `${m.name} (${m.phone})`).join(', ') 
                 : 'None',
             'Transaction ID': reg.transactionId,
-            'Payment Proof': reg.paymentProof ? `https://svit-hackverse-2k26.onrender.com${reg.paymentProof}` : 'N/A',
+            'Payment Proof': reg.paymentProof ? (reg.paymentProof.startsWith('http') ? reg.paymentProof : `https://svit-hackverse-2k26.onrender.com${reg.paymentProof}`) : 'N/A',
             'Registration Date': new Date(reg.createdAt).toLocaleString()
         }));
 
