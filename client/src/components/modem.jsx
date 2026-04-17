@@ -25,10 +25,24 @@ const Modem = ({ teamName, onClose }) => {
                     </p>
                 </div>
 
-                <div className="bg-white/[0.03] p-6 rounded-2xl border border-white/5">
-                    <p className="text-sm font-headline font-black uppercase tracking-[0.2em] text-tertiary">
-                        All the best for the competition!
-                    </p>
+                <div className="bg-white/[0.03] p-6 rounded-2xl border border-white/5 space-y-4">
+                    <div className="space-y-2 text-center">
+                        <p className="text-sm font-headline font-black uppercase tracking-[0.2em] text-tertiary">
+                            Final Step Required
+                        </p>
+                        <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest opacity-60">
+                            Join the group for further process, event guidelines & live updates
+                        </p>
+                    </div>
+                    <a 
+                        href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] font-black text-sm rounded-xl uppercase tracking-widest hover:bg-[#25D366]/20 transition-all flex items-center justify-center gap-3 group shadow-[0_4px_20px_rgba(37,211,102,0.1)]"
+                    >
+                        <span>Join Official WhatsApp</span>
+                        <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">send</span>
+                    </a>
                 </div>
 
                 <button 

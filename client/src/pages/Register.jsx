@@ -23,6 +23,39 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setMessage({ type: '', text: '' });
+
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const phoneRegex = /^[0-9]{10}$/;
+
+        // Validate Leader
+        if (!gmailRegex.test(leaderEmail)) {
+            setMessage({ type: 'error', text: 'Leader Email must be a @gmail.com address.' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        if (!phoneRegex.test(leaderPhone)) {
+            setMessage({ type: 'error', text: 'Leader Phone Number must be exactly 10 digits.' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        // Validate Members
+        for (let i = 0; i < teamSize - 1; i++) {
+            const member = members[i];
+            if (!member?.name || !member?.email) {
+                setMessage({ type: 'error', text: `Please provide all details for Operative 0${i + 2}.` });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            if (!gmailRegex.test(member.email)) {
+                setMessage({ type: 'error', text: `Operative 0${i + 2} Email must be a @gmail.com address.` });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+        }
+
         setLoading(true);
         
         const registrationData = {
@@ -35,11 +68,11 @@ const Register = () => {
             members: members.slice(0, teamSize - 1)
         };
 
-        // Simulate a slight delay as requested ("This may take a few seconds")
+        // Simulate a slight delay
         setTimeout(() => {
             navigate('/payment', { state: registrationData });
             setLoading(false);
-        }, 2000);
+        }, 1500);
     };
 
     return (
@@ -59,6 +92,15 @@ const Register = () => {
                         </h2>
                         <p className="mt-4 text-on-surface-variant font-black text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.5em] opacity-60">Initialize registration for SVIT HackVerse 2k26</p>
                     </div>
+
+                    {message.text && (
+                        <div className={`mb-8 p-4 rounded-xl text-xs font-black uppercase tracking-widest animate-shake ${message.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                            <div className="flex items-center gap-3">
+                                <span className="material-symbols-outlined text-sm">{message.type === 'success' ? 'check_circle' : 'warning'}</span>
+                                {message.text}
+                            </div>
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12">
                         {/* Section 1: Core Logistics */}
@@ -133,10 +175,12 @@ const Register = () => {
                                     <input 
                                         required
                                         className="w-full bg-surface-container-highest/30 border border-outline-variant/30 rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/30 focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" 
-                                        placeholder="COMM_CHANNEL@EMAIL.COM" 
+                                        placeholder="COMM_CHANNEL@GMAIL.COM" 
                                         type="email" 
                                         value={leaderEmail}
                                         onChange={(e) => setLeaderEmail(e.target.value)}
+                                        pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+                                        title="Please use a valid @gmail.com address"
                                     />
                                 </div>
                                 <div className="space-y-2 md:col-span-2 lg:col-span-1">
@@ -144,10 +188,14 @@ const Register = () => {
                                     <input 
                                         required
                                         className="w-full bg-surface-container-highest/30 border border-outline-variant/30 rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/30 focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" 
-                                        placeholder="+91-SIGNAL-CODE" 
+                                        placeholder="10-DIGIT MOBILE NUMBER" 
                                         type="tel" 
                                         value={leaderPhone}
                                         onChange={(e) => setLeaderPhone(e.target.value)}
+                                        pattern="[0-9]{10}"
+                                        minLength="10"
+                                        maxLength="10"
+                                        title="Phone number must be exactly 10 digits"
                                     />
                                 </div>
                             </div>
@@ -181,10 +229,12 @@ const Register = () => {
                                                 <input 
                                                     required
                                                     className="w-full bg-surface-container-highest/30 border border-outline-variant/30 rounded-lg px-4 py-3 md:py-4 text-sm text-on-surface placeholder:text-on-surface-variant/30 focus:ring-1 focus:ring-secondary focus:outline-none transition-all font-bold" 
-                                                    placeholder={`MEMBER ${idx + 2} EMAIL`} 
+                                                    placeholder={`MEMBER ${idx + 2} GMAIL ADDRESS`} 
                                                     type="email" 
                                                     value={members[idx]?.email || ''}
                                                     onChange={(e) => handleMemberChange(idx, 'email', e.target.value)}
+                                                    pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+                                                    title="Please use a valid @gmail.com address"
                                                 />
                                             </div>
                                         </div>

@@ -33,11 +33,13 @@ const participantSchema = new mongoose.Schema({
     },
     leaderEmail: {
         type: String,
-        required: true
+        required: [true, 'Leader email is required'],
+        match: [/^[a-zA-Z0-9._%+-]+@gmail\.com$/, 'Please use a valid @gmail.com address']
     },
     leaderPhone: {
         type: String,
-        required: true
+        required: [true, 'Leader phone is required'],
+        match: [/^[0-9]{10}$/, 'Phone number must be exactly 10 digits']
     },
     members: [
         {

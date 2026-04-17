@@ -63,7 +63,7 @@ const Payment = () => {
             const data = await response.json();
 
             if (data.success) {
-                setMessage({ type: 'success', text: 'Registration & Payment Submitted Successfully!' });
+                setMessage({ type: 'success', text: 'Registration & Payment Submitted Successfully! Please join the official WhatsApp group.' });
                 setShowModal(true);
             } else {
                 setMessage({ type: 'error', text: data.message || 'Submission failed.' });
@@ -120,6 +120,21 @@ const Payment = () => {
                         {message.text && (
                             <div className={`p-4 rounded-xl text-xs font-black uppercase tracking-widest ${message.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                                 {message.text}
+                                {message.type === 'success' && (
+                                    <div className="mt-3 bg-white/5 p-3 rounded-lg border border-primary/20">
+                                        <p className="text-[10px] text-primary font-black uppercase tracking-wider mb-2">Mandatory Action:</p>
+                                        <p className="text-[9px] text-on-surface-variant font-medium mb-3 normal-case tracking-normal">Please join the official WhatsApp group for further process, event guidelines, and team communication.</p>
+                                        <a 
+                                            href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className="bg-primary/20 text-primary px-3 py-2 rounded-lg hover:bg-primary/30 transition-all flex items-center justify-center gap-2 w-full font-bold lowercase tracking-normal"
+                                        >
+                                            join: whatsapp.com/Kxdryykp65XFpSWNnY7P8W
+                                            <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                                        </a>
+                                    </div>
+                                )}
                             </div>
                         )}
                         {/* Transaction ID Field */}

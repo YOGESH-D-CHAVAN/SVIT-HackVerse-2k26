@@ -20,6 +20,18 @@ exports.registerParticipant = async (req, res) => {
         const { teamName, teamSize, college, track, leaderName, leaderEmail, leaderPhone, transactionId } = req.body;
         let { members } = req.body;
 
+        // Backend Validation Constraints
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const phoneRegex = /^[0-9]{10}$/;
+
+        if (!gmailRegex.test(leaderEmail)) {
+            return res.status(400).json({ success: false, message: 'Invalid Leader Email. Only @gmail.com addresses are allowed.' });
+        }
+
+        if (!phoneRegex.test(leaderPhone)) {
+            return res.status(400).json({ success: false, message: 'Invalid Leader Phone. Must be exactly 10 digits.' });
+        }
+
         // ... existing parse logic ...
         if (typeof members === 'string') {
             try {
