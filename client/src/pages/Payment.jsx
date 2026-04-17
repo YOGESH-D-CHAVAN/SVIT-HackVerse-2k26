@@ -104,7 +104,7 @@ const Payment = () => {
                                 <img 
                                     alt="Payment QR Code" 
                                     className="w-full h-full object-contain filter invert brightness-150 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" 
-                                    src="../../public/SBI Collect QR Code.png"
+                                    src="/SBI Collect QR Code.png"
                                 />
                             </div>
                         </div>
