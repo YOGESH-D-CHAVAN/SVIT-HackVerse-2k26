@@ -121,18 +121,44 @@ const Payment = () => {
                             <div className={`p-4 rounded-xl text-xs font-black uppercase tracking-widest ${message.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                                 {message.text}
                                 {message.type === 'success' && (
-                                    <div className="mt-3 bg-white/5 p-3 rounded-lg border border-primary/20">
-                                        <p className="text-[10px] text-primary font-black uppercase tracking-wider mb-2">Mandatory Action:</p>
-                                        <p className="text-[9px] text-on-surface-variant font-medium mb-3 normal-case tracking-normal">Please join the official WhatsApp group for further process, event guidelines, and team communication.</p>
-                                        <a 
-                                            href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer" 
-                                            className="bg-primary/20 text-primary px-3 py-2 rounded-lg hover:bg-primary/30 transition-all flex items-center justify-center gap-2 w-full font-bold lowercase tracking-normal"
-                                        >
-                                            join: whatsapp.com/Kxdryykp65XFpSWNnY7P8W
-                                            <span className="material-symbols-outlined text-[14px]">open_in_new</span>
-                                        </a>
+                                    <div className="mt-4 bg-white/5 p-4 rounded-xl border border-primary/20 space-y-4">
+                                        <div className="flex flex-col gap-1">
+                                            <p className="text-[10px] text-primary font-black uppercase tracking-wider">Mandatory & Recommended Actions:</p>
+                                            <p className="text-[9px] text-on-surface-variant font-medium normal-case tracking-normal opacity-70">Join our community and explore exclusive hackathon resources.</p>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 gap-2">
+                                            <a 
+                                                href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20 px-3 py-2.5 rounded-lg hover:bg-[#25D366]/20 transition-all flex items-center justify-center gap-2 w-full font-bold lowercase tracking-normal text-[10px]"
+                                            >
+                                                <span className="material-symbols-outlined text-[16px]">forum</span>
+                                                whatsapp.com/Kxdryykp65XFpSWNnY7P8W
+                                            </a>
+
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <a 
+                                                    href="https://studio.tenais.in/" 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="bg-primary/10 text-primary border border-primary/20 px-2 py-2 rounded-lg hover:bg-primary/20 transition-all flex flex-col items-center justify-center gap-1 w-full font-bold text-[8.5px] uppercase tracking-tighter text-center"
+                                                >
+                                                    <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                                    TenAI's Studio Website
+                                                </a>
+                                                <a 
+                                                    href="https://play.google.com/store/apps/details?id=com.tenais.tenaisstudio" 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="bg-secondary/10 text-secondary border border-secondary/20 px-2 py-2 rounded-lg hover:bg-secondary/20 transition-all flex flex-col items-center justify-center gap-1 w-full font-bold text-[8.5px] uppercase tracking-tighter text-center"
+                                                >
+                                                    <span className="material-symbols-outlined text-[14px]">download</span>
+                                                    TenAI's Studio Product
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                             </div>

@@ -25,24 +25,48 @@ const Modem = ({ teamName, onClose }) => {
                     </p>
                 </div>
 
-                <div className="bg-white/[0.03] p-6 rounded-2xl border border-white/5 space-y-4">
+                <div className="bg-white/[0.03] p-6 rounded-2xl border border-white/5 space-y-6">
                     <div className="space-y-2 text-center">
                         <p className="text-sm font-headline font-black uppercase tracking-[0.2em] text-tertiary">
-                            Final Step Required
+                            Final Steps & Resources
                         </p>
                         <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest opacity-60">
-                            Join the group for further process, event guidelines & live updates
+                            Join the group & explore hackathon tools
                         </p>
                     </div>
-                    <a 
-                        href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-4 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] font-black text-sm rounded-xl uppercase tracking-widest hover:bg-[#25D366]/20 transition-all flex items-center justify-center gap-3 group shadow-[0_4px_20px_rgba(37,211,102,0.1)]"
-                    >
-                        <span>Join Official WhatsApp</span>
-                        <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">send</span>
-                    </a>
+                    
+                    <div className="grid grid-cols-1 gap-3">
+                        <a 
+                            href="https://chat.whatsapp.com/Kxdryykp65XFpSWNnY7P8W?mode=gi_t"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-4 bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] font-black text-xs rounded-xl uppercase tracking-widest hover:bg-[#25D366]/20 transition-all flex items-center justify-center gap-3 group shadow-[0_4px_20px_rgba(37,211,102,0.1)]"
+                        >
+                            <span className="material-symbols-outlined text-xl">forum</span>
+                            <span>Join Official WhatsApp</span>
+                        </a>
+
+                        <div className="grid grid-cols-2 gap-3">
+                            <a 
+                                href="https://studio.tenais.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="py-3 bg-primary/10 border border-primary/30 text-primary font-black text-[9px] rounded-xl uppercase tracking-widest hover:bg-primary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
+                            >
+                                <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                                <span>TenAI's Studio Website</span>
+                            </a>
+                            <a 
+                                href="https://play.google.com/store/apps/details?id=com.tenais.tenaisstudio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="py-3 bg-secondary/10 border border-secondary/30 text-secondary font-black text-[9px] rounded-xl uppercase tracking-widest hover:bg-secondary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
+                            >
+                                <span className="material-symbols-outlined text-lg">download</span>
+                                <span>TenAI's Studio Product</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <button 
