@@ -51,19 +51,19 @@ const Modem = ({ teamName, onClose }) => {
                                 href="https://studio.tenais.in/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="py-3 bg-primary/10 border border-primary/30 text-primary font-black text-[9px] rounded-xl uppercase tracking-widest hover:bg-primary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
+                                className="py-3 bg-primary/10 border border-primary/30 text-primary font-black text-[9px] rounded-xl tracking-widest hover:bg-primary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
                             >
                                 <span className="material-symbols-outlined text-lg">auto_awesome</span>
-                                <span>TenAI's Consulting India Pvt. Ltd Studio Website</span>
+                                <span>TenAI's Consulting India Pvt. Ltd. Studio Website</span>
                             </a>
-                            <a 
+                             <a 
                                 href="https://play.google.com/store/apps/details?id=com.tenais.tenaisstudio"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="py-3 bg-secondary/10 border border-secondary/30 text-secondary font-black text-[9px] rounded-xl uppercase tracking-widest hover:bg-secondary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
+                                className="py-3 bg-secondary/10 border border-secondary/30 text-secondary font-black text-[9px] rounded-xl tracking-widest hover:bg-secondary/20 transition-all flex flex-col items-center justify-center gap-1 group text-center"
                             >
                                 <span className="material-symbols-outlined text-lg">download</span>
-                                <span>TenAI's Consulting India Pvt. Ltd Studio Product</span>
+                                <span>TenAI's Consulting India Pvt. Ltd. Studio Product</span>
                             </a>
                         </div>
                     </div>

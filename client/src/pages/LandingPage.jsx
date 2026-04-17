@@ -82,7 +82,7 @@ const LandingPage = () => {
                         <div className="inline-block bg-primary/10 border border-primary/20 px-4 md:px-6 py-2 rounded-full mb-10 md:mb-12">
                             <p className="text-primary font-bold text-[10px] md:text-base tracking-widest uppercase flex items-center gap-2 md:gap-3">
                                 <span className="material-symbols-outlined text-sm md:text-[18px] animate-spin">settings</span>
-                                Solve Real Industry Problems • Win Cash Prizes By TenAI's Consulting India Pvt. Ltd
+                                Solve Real Industry Problems • Win Cash by  SVIT 
                             </p>
                         </div>
 
@@ -179,7 +179,7 @@ const LandingPage = () => {
         </span>
         <h4 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tight">Accelerator Program Support</h4>
         <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed opacity-80 uppercase tracking-wide font-bold">
-          Top 2 teams will get complimentary access to TenAI's Consulting India Pvt. Ltd's Accelerator Program including mentorship, product development guidance, and structured startup support.
+          Top 2 teams will get complimentary access to TenAI's Consulting India Pvt. Ltd.'s Accelerator Program including mentorship, product development guidance, and structured startup support.
         </p>
       </div>
 
@@ -223,7 +223,7 @@ const LandingPage = () => {
         </span>
         <h4 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tight">Industry Consultancy Support</h4>
         <p className="text-xs md:text-sm text-on-surface-variant leading-relaxed opacity-80 uppercase tracking-wide font-bold">
-          TenAI's Consulting India Pvt. Ltd provides consultancy and end-to-end solution development support for real-world problem statements and sponsors.
+          TenAI's Consulting India Pvt. Ltd. provides consultancy and end-to-end solution development support for real-world problem statements and sponsors.
         </p>
       </div>
 
@@ -241,7 +241,7 @@ const LandingPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {[
                                 { name: "Pravara Rural Education Society", logo: "/svitlogo.webp" },
-                                { name: "TenAI's Consulting India Pvt. Ltd", logo: "/TenAI.png" },
+                                { name: "TenAI's Consulting India Pvt. Ltd.", logo: "/TenAI.png" },
                                 { name: "Pravara Infotech", logo: "/infotech.png" }
                             ].map((company, idx) => (
                                 <div key={idx} className="glass-card p-8 md:p-10 rounded-[20px] md:rounded-[32px] border border-white/10 flex flex-col items-center justify-center text-center hover:bg-primary/[0.05] hover:border-primary/20 transition-all group">
@@ -274,10 +274,10 @@ const LandingPage = () => {
                                     <div className="absolute inset-0 bg-gradient-to-tr from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                                     
                                     <div className="h-20 md:h-32 flex items-center justify-center mb-6 md:mb-10">
-                                        <img src="/TenAI.png" alt="TenAI's Consulting India Pvt. Ltd" className="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                                        <img src="/TenAI.png" alt="TenAI's Consulting India Pvt. Ltd." className="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                                     </div>
 
-                                    <h3 className="text-2xl md:text-4xl font-black mb-4 md:mb-6 uppercase tracking-tighter">TenAI's Consulting India Pvt. Ltd</h3>
+                                    <h3 className="text-2xl md:text-4xl font-black mb-4 md:mb-6 tracking-tighter">TenAI's Consulting India Pvt. Ltd.</h3>
                                     <p className="text-on-surface-variant text-sm md:text-lg mb-8 md:mb-10 leading-relaxed max-w-lg mx-auto uppercase font-bold tracking-wide opacity-70">
                                         Leading the charge in intelligent solutions and sustainable digital transformation.
                                     </p>
