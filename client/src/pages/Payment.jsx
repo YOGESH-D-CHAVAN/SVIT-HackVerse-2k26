@@ -313,12 +313,11 @@ const Payment = () => {
 
             {/* Shell Footer */}
             <footer className="w-full py-16 bg-[#000000] border-t border-white/5 flex flex-col items-center gap-8 px-8 relative z-40">
-                <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-12">
-                    <div className="flex flex-col items-center md:items-start space-y-2 text-center md:text-left">
+                <div className="flex flex-col items-center w-full max-w-6xl gap-6 text-center">
+                    <div className="flex flex-col items-center space-y-2">
                         <span className="text-2xl font-black text-[#00F0FF] font-headline uppercase tracking-widest">SVIT HackVerse 2k26</span>
                         <p className="text-on-surface-variant font-black uppercase text-[10px] tracking-[0.4em] opacity-40 leading-loose">© 2026 SVIT Department of IT. <br /> Engineered for excellence.</p>
                     </div>
-
                 </div>
                 <div className="mt-8 pt-8 border-t border-white/5 w-full max-w-6xl flex justify-center">
                     <div className="flex gap-8">
