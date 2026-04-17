@@ -93,6 +93,74 @@ const Register = () => {
                         <p className="mt-4 text-on-surface-variant font-black text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.5em] opacity-60">Initialize registration for SVIT HackVerse 2k26</p>
                     </div>
 
+                    {/* Step-by-Step Payment Instructions */}
+                    <div className="mb-12 bg-primary/5 border border-primary/20 rounded-[32px] p-6 md:p-10 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] pointer-events-none"></div>
+                        <div className="relative z-10">
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary animate-pulse">
+                                    <span className="material-symbols-outlined text-3xl">info</span>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl md:text-2xl font-headline font-black uppercase tracking-tighter text-primary">Pre-Registration Protocol</h3>
+                                    <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-on-surface-variant opacity-70">Read instructions thoroughly before proceeding</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                                <div className="space-y-4">
+                                    {[
+                                        { s: "01", t: "Open SBI Collect Portal", link: "https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=4628563" },
+                                        { s: "02", t: "Type in search: SIR VISVESWARAYA INSTITUTE OF TECHNOLOGY" },
+                                        { s: "03", t: "Click Payment Category: Select TECHX-26" },
+                                        { s: "04", t: "Enter Name of the student" },
+                                        { s: "05", t: "Select activity to participate" },
+                                        { s: "06", t: "Enter College Name" },
+                                        { s: "07", t: "Enter Email ID of participant" },
+                                        { s: "08", t: "Enter Mobile Number of participant" },
+                                        { s: "--", t: "Remark: Optional" },
+                                        { s: "09", t: "Hostel Fee (If campus stay required)" }
+                                    ].map((step, i) => (
+                                        <div key={i} className={`flex gap-4 group/item ${step.s === '--' ? 'opacity-50 ml-6' : ''}`}>
+                                            <span className="text-primary font-mono font-black text-xs mt-1">[{step.s}]</span>
+                                            {step.link ? (
+                                                <a href={step.link} target="_blank" rel="noopener noreferrer" className="text-xs md:text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors flex items-center gap-2">
+                                                    {step.t} <span className="material-symbols-outlined text-xs">open_in_new</span>
+                                                </a>
+                                            ) : (
+                                                <p className="text-xs md:text-sm font-bold uppercase tracking-wide text-on-surface opacity-80 group-hover/item:opacity-100 transition-opacity">{step.t}</p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="space-y-4">
+                                    {[
+                                        { s: "10", t: "Food Charges (If required for mess)" },
+                                        { s: "11", t: "Registration Fee: ₹200 per group per activity" },
+                                        { s: "12", t: "Enter Remitter (student making payment) Name" },
+                                        { s: "13", t: "Enter Remitter Mobile Number" },
+                                        { s: "14", t: "Enter Captcha Verification" },
+                                        { s: "15", t: "Click on Next Phase" },
+                                        { s: "16", t: "Make Online Payment" },
+                                        { s: "17", t: "Print Receipt" },
+                                        { s: "18", t: "Upload the payment screenshot on next page (Payment Page) and complete the registration" }
+                                    ].map((step, i) => (
+                                        <div key={i} className="flex gap-4 group/item">
+                                            <span className="text-primary font-mono font-black text-xs mt-1">[{step.s}]</span>
+                                            <p className="text-xs md:text-sm font-bold uppercase tracking-wide text-on-surface opacity-80 group-hover/item:opacity-100 transition-opacity">{step.t}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="mt-10 p-4 rounded-2xl bg-primary/10 border border-primary/30 text-center relative group-hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] transition-all">
+                                <p className="text-xs md:text-sm font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary animate-pulse">
+                                    ⚠️ MANDATORY: READ ALL STEPS ABOVE BEFORE PROCEEDING TO FILL THE FORM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     {message.text && (
                         <div className={`mb-8 p-4 rounded-xl text-xs font-black uppercase tracking-widest animate-shake ${message.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                             <div className="flex items-center gap-3">

@@ -146,7 +146,7 @@ const Payment = () => {
                                                     className="bg-primary/10 text-primary border border-primary/20 px-2 py-2 rounded-lg hover:bg-primary/20 transition-all flex flex-col items-center justify-center gap-1 w-full font-bold text-[8.5px] uppercase tracking-tighter text-center"
                                                 >
                                                     <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
-                                                    TenAI's Studio Website
+                                                    TenAI's Consulting India Pvt. Ltd Studio Website
                                                 </a>
                                                 <a 
                                                     href="https://play.google.com/store/apps/details?id=com.tenais.tenaisstudio" 
@@ -155,7 +155,7 @@ const Payment = () => {
                                                     className="bg-secondary/10 text-secondary border border-secondary/20 px-2 py-2 rounded-lg hover:bg-secondary/20 transition-all flex flex-col items-center justify-center gap-1 w-full font-bold text-[8.5px] uppercase tracking-tighter text-center"
                                                 >
                                                     <span className="material-symbols-outlined text-[14px]">download</span>
-                                                    TenAI's Studio Product
+                                                    TenAI's Consulting India Pvt. Ltd Studio Product
                                                 </a>
                                             </div>
                                         </div>
