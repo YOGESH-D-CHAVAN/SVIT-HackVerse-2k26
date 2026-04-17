@@ -104,7 +104,7 @@ const Payment = () => {
                                 <img 
                                     alt="Payment QR Code" 
                                     className="w-full h-full object-contain filter invert brightness-150 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]" 
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWJvZeA-r2MzI5m_jORuOuEoTkGUTRQfxTjEmQdtIpCxXkZXGcjH62N8wlLK1N3p09AlywIdXSBYeYi2cQQ4q5zCu7_XiERVX01i1gtR0V8FKYt24oNx51GbDtEe6RbXXYdXrvyutNBrdBNM5WxqA79r07Xdui2ayAOsGoefjMD912cUyTfe_7OEEVAn-qkOPMxeU_KVqzKigOl_ZjxfceuwaLD5BTPCD6Ivn4s9iduuYaGLkAEqsIjxu4SIf1RdpnBSJj0W5bYw"
+                                    src="../../public/SBI Collect QR Code.png"
                                 />
                             </div>
                         </div>
