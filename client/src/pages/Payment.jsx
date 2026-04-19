@@ -25,6 +25,23 @@ const Payment = () => {
     const [showModal, setShowModal] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
 
+    // Effect to warn if page is accessed without registration data (e.g. on refresh)
+    React.useEffect(() => {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        console.log('🛸 API CONFIGURATION CHECK:');
+        console.log('URL:', apiUrl);
+        console.log('Environment:', import.meta.env.MODE);
+
+        if (!location.state) {
+            console.warn('⚠️ Payment page accessed without registration state. Redirecting to mission control.');
+            setMessage({ 
+                type: 'error', 
+                text: 'Registration session expired or page refreshed. Please restart the registration process.' 
+            });
+            // Optional: navigate('/register');
+        }
+    }, [location.state]);
+
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
@@ -35,6 +52,12 @@ const Payment = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (!location.state) {
+            setMessage({ type: 'error', text: 'Registration data missing. Please go back and fill the registration form first.' });
+            return;
+        }
+
         if (!transactionId || !file) {
             setMessage({ type: 'error', text: 'Transaction ID and Payment Proof are mandatory.' });
             return;

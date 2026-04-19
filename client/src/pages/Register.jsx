@@ -181,7 +181,7 @@ const Register = () => {
                                         type="email" 
                                         value={leaderEmail}
                                         onChange={(e) => setLeaderEmail(e.target.value)}
-                                        pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+                                        pattern="[a-zA-Z0-9._%+\-]+@gmail\.com"
                                         title="Please use a valid @gmail.com address"
                                     />
                                 </div>
@@ -235,7 +235,7 @@ const Register = () => {
                                                     type="email" 
                                                     value={members[idx]?.email || ''}
                                                     onChange={(e) => handleMemberChange(idx, 'email', e.target.value)}
-                                                    pattern="[a-zA-Z0-9._%+-]+@gmail\.com$"
+                                                    pattern="[a-zA-Z0-9._%+\-]+@gmail\.com"
                                                     title="Please use a valid @gmail.com address"
                                                 />
                                             </div>
