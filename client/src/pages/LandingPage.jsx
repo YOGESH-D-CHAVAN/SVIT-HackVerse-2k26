@@ -238,17 +238,27 @@ const LandingPage = () => {
                             <h2 className="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter">PARTNERED <span className="text-primary">INDUSTRIES</span></h2>
                             <p className="text-on-surface-variant font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-xs mt-2 md:mt-4 opacity-60">Growth through collaboration</p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {[
                                 { name: "Pravara Rural Education Society", logo: "/svitlogo.webp" },
                                 { name: "TenAI's Consulting India Pvt. Ltd.", logo: "/TenAI.png" },
-                                { name: "Pravara Infotech", logo: "/infotech.png" }
+                                { name: "Pravara Infotech", logo: "/infotech.png" },
+                                { name: "r3sys Nashik", logo: "/r3sys.webp" }
                             ].map((company, idx) => (
-                                <div key={idx} className="glass-card p-8 md:p-10 rounded-[20px] md:rounded-[32px] border border-white/10 flex flex-col items-center justify-center text-center hover:bg-primary/[0.05] hover:border-primary/20 transition-all group">
+                                <div 
+                                    key={idx} 
+                                    className={`p-8 md:p-10 rounded-[20px] md:rounded-[32px] border flex flex-col items-center justify-center text-center transition-all group 
+                                        ${company.name.includes('r3sys') 
+                                            ? 'bg-white border-white' 
+                                            : 'glass-card border-white/10 hover:bg-primary/[0.05] hover:border-primary/20'}`}
+                                >
                                     <div className="h-16 md:h-24 flex items-center justify-center mb-4 md:mb-6">
                                         <img src={company.logo} alt={company.name} className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500" />
                                     </div>
-                                    <span className="font-headline font-black text-on-surface group-hover:text-primary transition-colors uppercase tracking-widest text-[10px] md:text-sm">{company.name}</span>
+                                    <span className={`font-headline font-black uppercase tracking-widest text-[10px] md:text-sm transition-colors 
+                                        ${company.name.includes('r3sys') ? 'text-black' : 'text-on-surface group-hover:text-primary'}`}>
+                                        {company.name}
+                                    </span>
                                 </div>
                             ))}
                         </div>
