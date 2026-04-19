@@ -21,15 +21,26 @@ const Dashboard = () => {
 
         const fetchDashboardData = async () => {
             try {
+                const apiUrl = import.meta.env.VITE_API_URL;
+                if (!apiUrl) throw new Error('API URL not found');
+
                 // Fetch Stats
-                const statsRes = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/stats`);
-                const statsData = await statsRes.json();
-                if (statsData.success) setStats(statsData.stats);
+                const statsRes = await fetch(`${apiUrl}/api/admin/stats`);
+                if (statsRes.ok) {
+                    const statsData = await statsRes.json();
+                    if (statsData.success) setStats(statsData.stats);
+                } else {
+                    console.error('Failed to fetch stats:', statsRes.status);
+                }
 
                 // Fetch Registrations
-                const regRes = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/registrations`);
-                const regData = await regRes.json();
-                if (regData.success) setRegistrations(regData.data);
+                const regRes = await fetch(`${apiUrl}/api/admin/registrations`);
+                if (regRes.ok) {
+                    const regData = await regRes.json();
+                    if (regData.success) setRegistrations(regData.data);
+                } else {
+                    console.error('Failed to fetch registrations:', regRes.status);
+                }
             } catch (error) {
                 console.error('Error fetching dashboard data:', error);
             } finally {

@@ -14,13 +14,32 @@ const Admin = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/login`, {
+            const apiUrl = import.meta.env.VITE_API_URL;
+            if (!apiUrl) {
+                throw new Error('API URL is not configured. Please check your environment variables.');
+            }
+
+            const response = await fetch(`${apiUrl}/api/admin/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ adminId, authKey }),
             });
+
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            if (!response.ok) {
+                let errorData;
+                if (contentType && contentType.includes('application/json')) {
+                    errorData = await response.json();
+                }
+                throw new Error(errorData?.message || `Login failed (Status: ${response.status})`);
+            }
+
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new Error('Invalid server response: Expected JSON but received ' + (contentType || 'nothing'));
+            }
 
             const data = await response.json();
 
@@ -33,8 +52,13 @@ const Admin = () => {
                 setError(data.message || 'Login failed. Please check your credentials.');
             }
         } catch (err) {
-            setError('Connection error. Please ensure the backend server is running.');
-            console.error('Login error:', err);
+            console.error('Login error detail:', err);
+            
+            if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+                setError('Connection Refused: The frontend is trying to reach ' + (import.meta.env.VITE_API_URL || 'localhost') + ' but the backend is not responding. If this is a deployed version, please ensure the VITE_API_URL is correctly set in your deployment settings.');
+            } else {
+                setError(err.message || 'Connection error. Please ensure the backend server is running.');
+            }
         } finally {
             setLoading(false);
         }

@@ -44,6 +44,9 @@ const Payment = () => {
         setMessage({ type: '', text: '' });
 
         try {
+            const apiUrl = import.meta.env.VITE_API_URL;
+            if (!apiUrl) throw new Error('API URL is not configured.');
+
             const formData = new FormData();
             formData.append('teamName', teamName);
             formData.append('teamSize', teamSize);
@@ -55,21 +58,33 @@ const Payment = () => {
             formData.append('members', JSON.stringify(members));
             formData.append('paymentProof', file);
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/register`, {
+            const response = await fetch(`${apiUrl}/api/register`, {
                 method: 'POST',
                 body: formData,
             });
 
-            const data = await response.json();
-
-            if (data.success) {
-                setMessage({ type: 'success', text: 'Registration & Payment Submitted Successfully! Please join the official WhatsApp group.' });
-                setShowModal(true);
+            const contentType = response.headers.get('content-type');
+            if (response.ok && contentType && contentType.includes('application/json')) {
+                const data = await response.json();
+                if (data.success) {
+                    setMessage({ type: 'success', text: 'Registration & Payment Submitted Successfully! Please join the official WhatsApp group.' });
+                    setShowModal(true);
+                } else {
+                    setMessage({ type: 'error', text: data.message || 'Submission failed.' });
+                }
+            } else if (!response.ok) {
+                let errorMsg = 'Submission failed.';
+                if (contentType && contentType.includes('application/json')) {
+                    const errorData = await response.json();
+                    errorMsg = errorData.message || errorMsg;
+                }
+                throw new Error(errorMsg + ` (Status: ${response.status})`);
             } else {
-                setMessage({ type: 'error', text: data.message || 'Submission failed.' });
+                throw new Error('Unexpected response format from server.');
             }
         } catch (err) {
-            setMessage({ type: 'error', text: 'Connection error. Please try again.' });
+            console.error('Submission error:', err);
+            setMessage({ type: 'error', text: err.name === 'TypeError' ? 'Network error: Backend server is unreachable. Please check VITE_API_URL configuration.' : err.message });
         } finally {
             setLoading(false);
         }
