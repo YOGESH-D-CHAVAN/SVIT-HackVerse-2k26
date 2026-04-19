@@ -40,12 +40,25 @@ exports.login = async (req, res) => {
 exports.getStats = async (req, res) => {
     try {
         const totalRegistrations = await Participant.countDocuments();
-        const netRevenue = totalRegistrations * 200;
+        
+        // Sum total participants across all teams
+        const participantStats = await Participant.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    totalParticipants: { $sum: "$teamSize" }
+                }
+            }
+        ]);
+
+        const totalParticipants = participantStats.length > 0 ? participantStats[0].totalParticipants : 0;
+        const netRevenue = totalParticipants * 200;
 
         res.json({
             success: true,
             stats: {
-                totalRegistrations,
+                totalRegistrations, // Total Teams
+                totalParticipants,  // Total Individuals
                 netRevenue
             }
         });

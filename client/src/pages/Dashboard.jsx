@@ -5,6 +5,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const [stats, setStats] = useState({
         totalRegistrations: 0,
+        totalParticipants: 0,
         netRevenue: 0
     });
     const [registrations, setRegistrations] = useState([]);
@@ -99,10 +100,20 @@ const Dashboard = () => {
                     {/* Total Registrations */}
                     <div className="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between border border-white/5 border-t-2 border-t-primary/30 min-h-[160px] md:min-h-[200px]">
                         <div className="text-left">
-                            <span className="text-[9px] md:text-[10px] font-label text-primary uppercase tracking-[0.2em] mb-1 block font-black">Total Registrations</span>
-                            <h3 className="text-4xl md:text-6xl font-headline font-black text-on-surface">{stats.totalRegistrations}</h3>
+                            <span className="text-[9px] md:text-[10px] font-label text-primary uppercase tracking-[0.2em] mb-1 block font-black">Registrations Matrix</span>
+                            <div className="flex items-end gap-4 md:gap-8">
+                                <div>
+                                    <h3 className="text-3xl md:text-5xl font-headline font-black text-on-surface">{stats.totalRegistrations}</h3>
+                                    <p className="text-[7px] md:text-[8px] font-black text-on-surface-variant uppercase tracking-[0.2em] mt-1">Total Teams</p>
+                                </div>
+                                <div className="h-8 md:h-12 w-[1px] bg-white/10"></div>
+                                <div>
+                                    <h3 className="text-3xl md:text-5xl font-headline font-black text-primary">{stats.totalParticipants || 0}</h3>
+                                    <p className="text-[7px] md:text-[8px] font-black text-on-surface-variant uppercase tracking-[0.2em] mt-1">Total Participants</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="mt-4 md:mt-8 flex items-end gap-1 md:gap-2 h-8 md:h-12">
+                        <div className="mt-4 md:mt-6 flex items-end gap-1 md:gap-2 h-4 md:h-6 opacity-30">
                             {[0.2, 0.3, 0.4, 0.6, 1].map((op, i) => (
                                 <div key={i} className="w-full bg-primary h-full rounded-sm" style={{ opacity: op, height: `${(i+1)*20}%` }}></div>
                             ))}
