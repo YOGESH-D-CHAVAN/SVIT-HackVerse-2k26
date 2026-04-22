@@ -113,7 +113,7 @@ const LandingPage = () => {
                         </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                                 {[
-                                    { label: "Registration Deadline", value: "22 APR 2026", color: "error", icon: "alarm" },
+                                    { label: "Registration Deadline", value: "23 APR 2026", color: "error", icon: "alarm" },
                                     { label: "Hackathon Dates", value: "24th – 25th APR", color: "primary", icon: "calendar_today" },
                                     { label: "Timing", value: "24th 9:00 AM to 25th 9:00 PM", color: "secondary", icon: "schedule" }
                                 ].map((item, idx) => (
@@ -238,12 +238,14 @@ const LandingPage = () => {
                             <h2 className="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter">PARTNERED <span className="text-primary">INDUSTRIES</span></h2>
                             <p className="text-on-surface-variant font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-xs mt-2 md:mt-4 opacity-60">Growth through collaboration</p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                             {[
                                 { name: "Pravara Rural Education Society", logo: "/svitlogo.webp" },
                                 { name: "TenAI's Consulting India Pvt. Ltd.", logo: "/TenAI.png" },
                                 { name: "Pravara Infotech", logo: "/infotech.png" },
-                                { name: "r3sys Nashik", logo: "/r3sys.webp" }
+                                { name: "r3sys Nashik", logo: "/r3sys.webp" },
+                                { name: "ARobiX AI Pvt. Ltd., Nashik", logo: "/ARobiX.jpeg" },
+                                { name: "SoftCrowd Technologies, Nashik", logo: "/softcrowd.png" }
                             ].map((company, idx) => (
                                 <div 
                                     key={idx} 
