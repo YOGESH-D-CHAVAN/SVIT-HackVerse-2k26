@@ -80,7 +80,7 @@ const Dashboard = () => {
     return (
         <div className="bg-background text-on-surface font-body cyber-grid min-h-screen text-left">
             {/* Main Content Area */}
-            <main className="p-4 sm:p-6 md:p-10">
+            <main className="p-4 sm:p-6 md:p-10 pt-24 sm:pt-32">
                 {/* Header */}
                 <header className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-8 md:mb-12">
                     <div>
@@ -96,6 +96,12 @@ const Dashboard = () => {
                             className="flex-1 lg:flex-none bg-error/10 border border-error/20 text-error font-label px-4 md:px-6 py-2.5 rounded-full hover:bg-error/20 transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest active:scale-95 transition-all"
                         >
                             <span className="material-symbols-outlined text-sm md:text-base">logout</span> Logout
+                        </button>
+                        <button 
+                            onClick={() => navigate('/admin/attendance-list')}
+                            className="flex-1 lg:flex-none bg-secondary/10 border border-secondary/20 text-secondary font-label px-4 md:px-6 py-2.5 rounded-full hover:bg-secondary/20 transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest active:scale-95"
+                        >
+                            <span className="material-symbols-outlined text-sm md:text-base">how_to_reg</span> Attendance Log
                         </button>
                         <button 
                             onClick={handleExport}

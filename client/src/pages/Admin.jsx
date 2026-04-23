@@ -86,9 +86,11 @@ const Admin = () => {
                     ))}
                 </div>
             </header>
-
+            {/* Spacer for Fixed Header */}
+            <div className="h-20 md:h-24"></div>
+            
             {/* Main Content: Login Portal */}
-            <main className="flex-grow flex items-center justify-center p-4 sm:p-6 pt-24 z-10">
+            <main className="flex-grow flex items-center justify-center p-4 sm:p-6 z-10">
                 <div className="relative w-full max-w-md">
                     {/* Glow Halo Effect */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary via-tertiary to-primary rounded-xl blur-2xl opacity-20"></div>

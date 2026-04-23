@@ -6,6 +6,9 @@ import Payment from './pages/Payment';
 import Admin from './pages/Admin';
 import Dashboard from './pages/Dashboard';
 import Guidelines from './pages/Guidelines';
+import MyQRCode from './pages/MyQRCode';
+import AttendanceScanner from './pages/AttendanceScanner';
+import AttendanceList from './pages/AttendanceList';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/guidelines" element={<Guidelines />} />
+        <Route path="/my-qr" element={<MyQRCode />} />
+        <Route path="/admin/scanner" element={<AttendanceScanner />} />
+        <Route path="/admin/attendance-list" element={<AttendanceList />} />
       </Routes>
     </Router>
   );
