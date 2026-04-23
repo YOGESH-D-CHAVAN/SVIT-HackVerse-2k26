@@ -72,7 +72,7 @@ exports.getStats = async (req, res) => {
 // @access  Private (Admin)
 exports.getRegistrations = async (req, res) => {
     try {
-        const registrations = await Participant.find().sort({ createdAt: -1 }).limit(20);
+        const registrations = await Participant.find().sort({ createdAt: -1 });
         res.json({
             success: true,
             count: registrations.length,
