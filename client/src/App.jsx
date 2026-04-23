@@ -9,6 +9,8 @@ import Guidelines from './pages/Guidelines';
 import MyQRCode from './pages/MyQRCode';
 import AttendanceScanner from './pages/AttendanceScanner';
 import AttendanceList from './pages/AttendanceList';
+import SeatArrangement from './pages/SeatArrangement';
+
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/my-qr" element={<MyQRCode />} />
         <Route path="/admin/scanner" element={<AttendanceScanner />} />
         <Route path="/admin/attendance-list" element={<AttendanceList />} />
+        <Route path="/seat-arrangement" element={<SeatArrangement />} />
+
       </Routes>
     </Router>
   );

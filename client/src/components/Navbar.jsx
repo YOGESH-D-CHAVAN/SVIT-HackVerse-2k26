@@ -11,6 +11,7 @@ const Navbar = () => {
         { name: 'Prizes', path: '/#benefits' },
         { name: 'Partners', path: '/#partners' },
         { name: 'Guidelines', path: '/guidelines' },
+        { name: 'Seats', path: '/seat-arrangement' },
         { name: 'My QR', path: '/my-qr' },
         { name: 'Contact', path: '/#contact' },
     ];
