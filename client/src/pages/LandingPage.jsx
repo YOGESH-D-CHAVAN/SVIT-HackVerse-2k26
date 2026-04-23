@@ -91,6 +91,10 @@ const LandingPage = () => {
                                 <span className="material-symbols-outlined text-xl md:text-2xl">rocket_launch</span>
                                 REGISTER NOW
                             </Link>
+                            <Link to="/my-qr" className="bg-[#11111a] border border-primary/30 text-primary text-lg md:text-xl font-black px-8 md:px-12 py-4 md:py-5 rounded-2xl flex items-center justify-center gap-4 hover:bg-primary/5 hover:border-primary/60 transition-all active:scale-95">
+                                <span className="material-symbols-outlined text-xl md:text-2xl">qr_code_2</span>
+                                MY QR
+                            </Link>
                             <a 
                                 href="/SVIT_Sponcership-Details Document.pdf"
                                 target="_blank"

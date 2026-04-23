@@ -8,6 +8,7 @@ const fs = require('fs');
 // Import routes
 const adminRoutes = require('./routes/adminRoutes');
 const registrationRoutes = require('./routes/registrationRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -58,6 +59,7 @@ app.get('/api/health', (req, res) => {
 // API Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/register', registrationRoutes);
+app.use('/api/attendance', attendanceRoutes);
 
 // Server Startup
 const startServer = async () => {
