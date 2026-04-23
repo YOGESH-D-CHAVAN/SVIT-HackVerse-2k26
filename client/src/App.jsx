@@ -10,6 +10,8 @@ import MyQRCode from './pages/MyQRCode';
 import AttendanceScanner from './pages/AttendanceScanner';
 import AttendanceList from './pages/AttendanceList';
 import SeatArrangement from './pages/SeatArrangement';
+import EmailBroadcast from './pages/EmailBroadcast';
+
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path="/admin/scanner" element={<AttendanceScanner />} />
         <Route path="/admin/attendance-list" element={<AttendanceList />} />
         <Route path="/seat-arrangement" element={<SeatArrangement />} />
+        <Route path="/admin/email-broadcast" element={<EmailBroadcast />} />
+
 
       </Routes>
     </Router>

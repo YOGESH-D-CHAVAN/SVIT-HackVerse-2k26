@@ -104,11 +104,18 @@ const Dashboard = () => {
                             <span className="material-symbols-outlined text-sm md:text-base">how_to_reg</span> Attendance Log
                         </button>
                         <button 
+                            onClick={() => navigate('/admin/email-broadcast')}
+                            className="flex-1 lg:flex-none bg-[#7000FF]/10 border border-[#7000FF]/20 text-[#7000FF] font-label px-4 md:px-6 py-2.5 rounded-full hover:bg-[#7000FF]/20 transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest active:scale-95"
+                        >
+                            <span className="material-symbols-outlined text-sm md:text-base">mail</span> Send Mail
+                        </button>
+                        <button 
                             onClick={handleExport}
                             className="flex-[2] lg:flex-none bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold px-6 md:px-10 py-2.5 rounded-full shadow-[0_0_20px_rgba(0,238,252,0.3)] hover:scale-105 active:scale-95 transition-all text-[10px] md:text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 md:gap-3"
                         >
                             <span className="material-symbols-outlined text-sm md:text-base">assessment</span> Export Master Report
                         </button>
+
                     </div>
                 </header>
 
@@ -326,8 +333,6 @@ const Dashboard = () => {
                 </div>
             )}
 
-
-
             {/* Footer Identity */}
             <footer className="py-16 flex flex-col items-center gap-8 px-8 border-t border-white/5 bg-[#000000]">
                 <div className="text-2xl font-black text-[#00F0FF] font-headline uppercase tracking-[0.3em]">SVIT HackVerse 2k26</div>
@@ -342,4 +347,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
