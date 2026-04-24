@@ -58,7 +58,7 @@ const MyQRCode = () => {
 
             <main className="flex-grow flex flex-col items-center justify-center p-4 sm:p-6 z-10">
                 <div className="w-full max-w-md glass-panel p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-white/5 backdrop-blur-2xl text-center shadow-2xl animate-fade-up">
-                    <h2 className="text-2xl sm:text-3xl font-headline font-bold text-primary uppercase italic tracking-tighter mb-2">My Entry Pass</h2>
+                    <h2 className="text-2xl sm:text-3xl font-headline font-bold text-primary uppercase italic tracking-tighter mb-2">attendance Pass</h2>
                     <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-on-surface-variant mb-6 sm:mb-8 opacity-60">Retrieve your unique attendance QR</p>
 
                     {!token ? (
