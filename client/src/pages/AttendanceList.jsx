@@ -57,7 +57,8 @@ const AttendanceList = () => {
         r.email.toLowerCase().includes(search.toLowerCase())
     );
 
-    const attendedCount = records.filter(r => r.isAttended).length;
+    const attendedCount1 = records.filter(r => r.isAttended).length;
+    const attendedCount2 = records.filter(r => r.isAttendedDay2).length;
 
     return (
         <div className="bg-[#05050a] text-on-surface font-body min-h-screen flex flex-col text-left">
@@ -95,14 +96,12 @@ const AttendanceList = () => {
                         <h3 className="text-2xl sm:text-4xl font-headline font-black">{records.length}</h3>
                     </div>
                     <div className="glass-card p-5 sm:p-6 rounded-2xl border border-white/5 border-t-2 border-t-green-500/30">
-                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-green-500 mb-1">Attended</p>
-                        <h3 className="text-2xl sm:text-4xl font-headline font-black">{attendedCount}</h3>
+                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-green-500 mb-1">Day 1 Present</p>
+                        <h3 className="text-2xl sm:text-4xl font-headline font-black">{attendedCount1}</h3>
                     </div>
-                    <div className="glass-card p-5 sm:p-6 rounded-2xl border border-white/5 border-t-2 border-t-secondary/30 sm:col-span-2 lg:col-span-1">
-                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-secondary mb-1">Attendance Rate</p>
-                        <h3 className="text-2xl sm:text-4xl font-headline font-black">
-                            {records.length > 0 ? Math.round((attendedCount / records.length) * 100) : 0}%
-                        </h3>
+                    <div className="glass-card p-5 sm:p-6 rounded-2xl border border-white/5 border-t-2 border-t-secondary/30">
+                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-secondary mb-1">Day 2 Present</p>
+                        <h3 className="text-2xl sm:text-4xl font-headline font-black">{attendedCount2}</h3>
                     </div>
                 </div>
 
@@ -130,8 +129,9 @@ const AttendanceList = () => {
                                     <th className="px-6 sm:px-8 py-4 sm:py-5">Participant</th>
                                     <th className="px-6 sm:px-8 py-4 sm:py-5">Squad</th>
                                     <th className="px-6 sm:px-8 py-4 sm:py-5">Role</th>
-                                    <th className="px-6 sm:px-8 py-4 sm:py-5 text-center">Status</th>
-                                    <th className="px-6 sm:px-8 py-4 sm:py-5 text-right">Time</th>
+                                    <th className="px-6 sm:px-8 py-4 sm:py-5 text-center">Day 1</th>
+                                    <th className="px-6 sm:px-8 py-4 sm:py-5 text-center">Day 2</th>
+                                    <th className="px-6 sm:px-8 py-4 sm:py-5 text-right">Last Check-in</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-white/5">
@@ -158,7 +158,18 @@ const AttendanceList = () => {
                                                 <div className="flex justify-center">
                                                     {record.isAttended ? (
                                                         <span className="flex items-center gap-1.5 text-green-400 text-[8px] sm:text-[9px] font-black uppercase tracking-widest">
-                                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Present
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span> Present
+                                                        </span>
+                                                    ) : (
+                                                        <span className="text-on-surface-variant opacity-30 text-[8px] sm:text-[9px] font-black uppercase tracking-widest">Absent</span>
+                                                    )}
+                                                </div>
+                                            </td>
+                                            <td className="px-6 sm:px-8 py-4 sm:py-5 text-center">
+                                                <div className="flex justify-center">
+                                                    {record.isAttendedDay2 ? (
+                                                        <span className="flex items-center gap-1.5 text-secondary text-[8px] sm:text-[9px] font-black uppercase tracking-widest">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span> Present
                                                         </span>
                                                     ) : (
                                                         <span className="text-on-surface-variant opacity-30 text-[8px] sm:text-[9px] font-black uppercase tracking-widest">Absent</span>
@@ -167,7 +178,11 @@ const AttendanceList = () => {
                                             </td>
                                             <td className="px-6 sm:px-8 py-4 sm:py-5 text-right">
                                                 <span className="text-[9px] sm:text-[10px] font-mono text-on-surface-variant">
-                                                    {record.attendedAt ? new Date(record.attendedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '--:--'}
+                                                    {record.attendedAtDay2 ? 
+                                                        `D2: ${new Date(record.attendedAtDay2).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 
+                                                        record.attendedAt ? 
+                                                        `D1: ${new Date(record.attendedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 
+                                                        '--:--'}
                                                 </span>
                                             </td>
                                         </tr>

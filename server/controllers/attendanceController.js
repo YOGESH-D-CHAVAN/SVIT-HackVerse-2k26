@@ -78,26 +78,37 @@ exports.getParticipantByToken = async (req, res) => {
 exports.markAttendance = async (req, res) => {
     try {
         const { token } = req.params;
+        const { day } = req.body; // Expecting { day: 1 } or { day: 2 }
         const record = await Attendance.findOne({ token });
 
         if (!record) {
             return res.status(404).json({ success: false, message: 'Invalid QR Code / Token.' });
         }
 
-        if (record.isAttended) {
-            return res.status(400).json({ success: false, message: 'Attendance already marked for this participant.' });
+        if (day === 2) {
+            if (record.isAttendedDay2) {
+                return res.status(400).json({ success: false, message: 'Day 2 attendance already marked for this participant.' });
+            }
+            record.isAttendedDay2 = true;
+            record.attendedAtDay2 = new Date();
+        } else {
+            // Default to Day 1
+            if (record.isAttended) {
+                return res.status(400).json({ success: false, message: 'Day 1 attendance already marked for this participant.' });
+            }
+            record.isAttended = true;
+            record.attendedAt = new Date();
         }
 
-        record.isAttended = true;
-        record.attendedAt = new Date();
         await record.save();
 
         res.status(200).json({
             success: true,
-            message: `Attendance marked successfully for ${record.name}.`,
+            message: `Attendance marked successfully for ${record.name} (Day ${day || 1}).`,
             data: record
         });
     } catch (error) {
+        console.error('Mark Attendance Error:', error);
         res.status(500).json({ success: false, message: 'Error marking attendance.' });
     }
 };

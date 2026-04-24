@@ -38,6 +38,13 @@ const attendanceSchema = new mongoose.Schema({
     },
     attendedAt: {
         type: Date
+    },
+    isAttendedDay2: {
+        type: Boolean,
+        default: false
+    },
+    attendedAtDay2: {
+        type: Date
     }
 }, { timestamps: true });
 
