@@ -140,7 +140,7 @@ const AttendanceScanner = () => {
             <main className="flex-grow flex flex-col items-center p-4 sm:p-6 z-10">
                 <div className="w-full max-w-2xl glass-panel p-5 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-white/5 backdrop-blur-2xl shadow-2xl animate-fade-up">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h2 className="text-2xl sm:text-3xl font-headline font-bold text-secondary uppercase italic tracking-tighter mb-2">attendance Scanner</h2>
+                        <h2 className="text-2xl sm:text-3xl font-headline font-bold text-secondary uppercase italic tracking-tighter mb-2">Gate Control</h2>
                         <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-on-surface-variant opacity-60 mb-4">Scan Participant Pass</p>
                         
                         <div className="flex justify-center gap-4 mt-2">
