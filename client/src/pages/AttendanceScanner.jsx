@@ -7,6 +7,7 @@ const AttendanceScanner = () => {
     const [participant, setParticipant] = useState(null);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState({ type: '', message: '' });
+    const [selectedDay, setSelectedDay] = useState(1);
     const scannerRef = useRef(null);
     const html5QrCodeRef = useRef(null);
 
@@ -98,13 +99,21 @@ const AttendanceScanner = () => {
         try {
             const apiUrl = import.meta.env.VITE_API_URL;
             const res = await fetch(`${apiUrl}/api/attendance/mark/${participant.token}`, {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ day: selectedDay })
             });
             const data = await res.json();
 
             if (data.success) {
-                setStatus({ type: 'success', message: `Successfully marked attendance for ${participant.name}` });
-                setParticipant({ ...participant, isAttended: true });
+                setStatus({ type: 'success', message: `Successfully marked Day ${selectedDay} attendance for ${participant.name}` });
+                if (selectedDay === 2) {
+                    setParticipant({ ...participant, isAttendedDay2: true });
+                } else {
+                    setParticipant({ ...participant, isAttended: true });
+                }
             } else {
                 setStatus({ type: 'error', message: data.message || 'Failed to mark attendance' });
             }
@@ -131,8 +140,23 @@ const AttendanceScanner = () => {
             <main className="flex-grow flex flex-col items-center p-4 sm:p-6 z-10">
                 <div className="w-full max-w-2xl glass-panel p-5 sm:p-8 rounded-[24px] sm:rounded-[32px] border border-white/5 backdrop-blur-2xl shadow-2xl animate-fade-up">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h2 className="text-2xl sm:text-3xl font-headline font-bold text-secondary uppercase italic tracking-tighter mb-2">attendance Scanner</h2>
-                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-on-surface-variant opacity-60">Scan Participant Pass</p>
+                        <h2 className="text-2xl sm:text-3xl font-headline font-bold text-secondary uppercase italic tracking-tighter mb-2">Gate Control</h2>
+                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-on-surface-variant opacity-60 mb-4">Scan Participant Pass</p>
+                        
+                        <div className="flex justify-center gap-4 mt-2">
+                            <button 
+                                onClick={() => setSelectedDay(1)}
+                                className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${selectedDay === 1 ? 'bg-primary text-on-primary shadow-lg shadow-primary/20' : 'bg-white/5 text-on-surface-variant'}`}
+                            >
+                                Day 1
+                            </button>
+                            <button 
+                                onClick={() => setSelectedDay(2)}
+                                className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${selectedDay === 2 ? 'bg-secondary text-on-secondary shadow-lg shadow-secondary/20' : 'bg-white/5 text-on-surface-variant'}`}
+                            >
+                                Day 2
+                            </button>
+                        </div>
                     </div>
 
                     <div className={`${scanResult ? 'hidden' : 'block'}`}>
@@ -169,20 +193,20 @@ const AttendanceScanner = () => {
                                             </span>
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant opacity-50">Current Status</p>
-                                            <span className={`inline-block px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${participant.isAttended ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'}`}>
-                                                {participant.isAttended ? 'Present / Checked In' : 'Absent / Pending'}
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant opacity-50">Day {selectedDay} Status</p>
+                                            <span className={`inline-block px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${(selectedDay === 2 ? participant.isAttendedDay2 : participant.isAttended) ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'}`}>
+                                                {(selectedDay === 2 ? participant.isAttendedDay2 : participant.isAttended) ? 'Present / Checked In' : 'Absent / Pending'}
                                             </span>
                                         </div>
                                     </div>
 
-                                    {!participant.isAttended && (
+                                    {!(selectedDay === 2 ? participant.isAttendedDay2 : participant.isAttended) && (
                                         <button 
                                             onClick={handleMarkAttendance}
                                             disabled={loading}
                                             className="w-full bg-green-500 text-white py-5 rounded-2xl font-headline font-black text-xl uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/20 active:scale-[0.98]"
                                         >
-                                            Confirm Attendance
+                                            Confirm Day {selectedDay} Attendance
                                         </button>
                                     )}
 
